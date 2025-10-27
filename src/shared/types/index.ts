@@ -12,4 +12,4 @@ export type Task = RawTask & {
   daysDifference?: number | null;
 };
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";
-export type GroupBy = "DATE" | "TITLE" | "PRIORITY";
+export type GroupBy = "DATE" | "PRIORITY";

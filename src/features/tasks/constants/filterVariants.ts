@@ -1,5 +1,6 @@
 import { isValid, parse, compareAsc } from "date-fns-jalali";
 import { type Task } from "@/shared/types";
+import { GROUP_VARIANT } from "./group";
 export const sortVariants = {
   DATE: (a: Task, b: Task) => {
     const aDate = a?.due_date
@@ -21,4 +22,20 @@ export const sortVariants = {
   TITLE: (a: Task, b: Task) => b.title.localeCompare(a.title),
   PRIORITY: (a: Task, b: Task) => Number(b.priority) - Number(a.priority),
 };
-export const groupVariants = {};
+export const groupVariants = {
+  DATE: (acc, task: Task) => {
+    let key = null;
+    const daysDifference = task.daysDifference;
+    if (!daysDifference) key = GROUP_VARIANT.DATE.NONE;
+    else {
+      if (daysDifference == -1) key = GROUP_VARIANT.DATE.YESTERDAY;
+      if (daysDifference == 0) key = GROUP_VARIANT.DATE.TODAY;
+      if (daysDifference == 1) key = GROUP_VARIANT.DATE.TOMORROW;
+    }
+    if (!key) key = GROUP_VARIANT.DATE.OTHERS;
+
+    acc[key].push(task);
+    return acc;
+  },
+  PRIORITY: (acc, task) => {},
+};
