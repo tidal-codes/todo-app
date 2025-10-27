@@ -37,5 +37,26 @@ export const groupVariants = {
     acc[key].push(task);
     return acc;
   },
-  PRIORITY: (acc, task) => {},
+  PRIORITY: (acc, task: Task) => {
+    let key = null;
+    const priority = task.priority;
+    switch (priority.toString()) {
+      case "0":
+        key = GROUP_VARIANT.PRIORITY.NONE;
+        break;
+      case "1":
+        key = GROUP_VARIANT.PRIORITY.LOW;
+        break;
+      case "2":
+        key = GROUP_VARIANT.PRIORITY.MEDIUM;
+        break;
+      case "3":
+        key = GROUP_VARIANT.PRIORITY.HIGH;
+        break;
+      default:
+        throw new Error("priority is not defined");
+    }
+    acc[key].push(task);
+    return acc;
+  },
 };

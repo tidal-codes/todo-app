@@ -1,7 +1,9 @@
 import { Box, Checkbox, Flex, Text } from "@chakra-ui/react";
 import { DotsThree } from "@phosphor-icons/react";
+import React from "react";
 
 const Task = ({ title }: { title: string | null }) => {
+  // console.log('re render')
   return (
     <Box border="1px solid" borderColor="gray.200" my={2} p={2}>
       <Flex direction="column">
@@ -27,4 +29,4 @@ const Task = ({ title }: { title: string | null }) => {
   );
 };
 
-export default Task;
+export default React.memo(Task);

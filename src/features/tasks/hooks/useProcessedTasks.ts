@@ -9,7 +9,7 @@ export function useProcessedTasks(tasks: Task[]) {
   const grouped = useMemo(() => {
     if (tasks?.length === 0) return [];
     const groupedTasks = groupTasks(tasks, filter.groupBy);
-    return normalizeTasks(groupedTasks);
+    return normalizeTasks(groupedTasks, filter.groupBy);
   }, [tasks, filter.groupBy]);
 
   return grouped;
