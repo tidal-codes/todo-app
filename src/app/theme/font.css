@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "IRANYekan";
+  src: url("../../assets/fonts/IRANYekanRegular.ttf") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+body{
+    font-family: "IRANYekan";
+}
