@@ -1,11 +1,15 @@
 import type { RawTask, Task } from "@/shared/types";
-import { getDaysDifference } from "./date";
+import { getDateString, getDaysDifference, getRelativeDate } from "./date";
+import { PRIORITY } from "../constants/priority";
 export function preprocessTask(task: RawTask): Task {
   if (!task) return task;
   if (!task.due_date) return task;
   try {
     const daysDifference = getDaysDifference(task.due_date);
-    return { ...task, daysDifference };
+    const relativeDate =
+      daysDifference !== null ? getRelativeDate(daysDifference) : null;
+    const dateString = getDateString(task.due_date);
+    return { ...task, daysDifference, relativeDate, dateString };
   } catch (e) {
     return task;
   }

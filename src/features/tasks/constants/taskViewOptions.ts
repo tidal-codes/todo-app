@@ -15,10 +15,10 @@ export const groupByOption = {
   PRIORITY: {
     action: groupVariants.PRIORITY,
     initial: () => ({
-      [GROUP_VARIANT.PRIORITY.NONE]: [],
-      [GROUP_VARIANT.PRIORITY.LOW]: [],
-      [GROUP_VARIANT.PRIORITY.MEDIUM]: [],
       [GROUP_VARIANT.PRIORITY.HIGH]: [],
+      [GROUP_VARIANT.PRIORITY.MEDIUM]: [],
+      [GROUP_VARIANT.PRIORITY.LOW]: [],
+      [GROUP_VARIANT.PRIORITY.NONE]: [],
     }),
   },
 };

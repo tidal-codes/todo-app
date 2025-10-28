@@ -15,3 +15,17 @@ export function getDaysDifference(jalaliDateString: string): number | null {
     return null;
   }
 }
+export function getRelativeDate(daysDiff: number): string {
+  if (daysDiff === 0) return "امروز";
+  if (daysDiff === 1) return "فردا";
+  if (daysDiff === -1) return "دیروز";
+
+  const absDays = Math.abs(daysDiff);
+  const str = daysDiff > 0 ? "روز آینده" : "روز پیش";
+
+  return `${absDays} ${str}`;
+}
+export function getDateString(jalaliDateString: string): string {
+  const date = parse(jalaliDateString, "yyyy-M-d", new Date());
+  return format(date, "d MMMM yyyy");
+}

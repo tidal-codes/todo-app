@@ -3,7 +3,8 @@ import { Box, Checkbox, Flex, Separator, Text } from "@chakra-ui/react";
 import { DotsThree } from "@phosphor-icons/react";
 import React from "react";
 import { Flag, CalendarDays } from "lucide-react";
-const Task = ({ title, priority, due_date }: Task) => {
+import { PRIORITY } from "../constants/priority";
+const Task = ({ title, priority, due_date, relativeDate }: Task) => {
   console.log("task re render");
   return (
     <Box border="1px solid" borderColor="gray.200" my={2} p={2}>
@@ -22,16 +23,18 @@ const Task = ({ title, priority, due_date }: Task) => {
         </Box>
         <Separator my={2} />
         <Flex gap={2}>
-          <Flex
-            alignItems="center"
-            gap={1}
-            border="1px solid"
-            borderColor="gray.300"
-            px={2}
-          >
-            <Flag size={14} />
-            {priority}
-          </Flex>
+          {priority ? (
+            <Flex
+              alignItems="center"
+              gap={1}
+              border="1px solid"
+              borderColor="gray.300"
+              px={2}
+            >
+              <Flag size={14} />
+              {PRIORITY.LABLE[priority]}
+            </Flex>
+          ) : null}
           <Flex
             alignItems="center"
             gap={1}
@@ -40,7 +43,7 @@ const Task = ({ title, priority, due_date }: Task) => {
             px={2}
           >
             <CalendarDays size={14} />
-            {due_date}
+            <span>{relativeDate}</span>
           </Flex>
         </Flex>
       </Flex>

@@ -13,6 +13,9 @@ export type RawTask = {
 };
 export type Task = RawTask & {
   daysDifference?: number | null;
+  relativeDate?: string | null;
+  dateString?: string | null;
+  priorityLable?: string;
 };
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";
 export type GroupBy = "DATE" | "PRIORITY";

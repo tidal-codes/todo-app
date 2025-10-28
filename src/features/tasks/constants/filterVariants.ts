@@ -26,8 +26,9 @@ export const groupVariants = {
   DATE: (acc, task: Task) => {
     let key = null;
     const daysDifference = task.daysDifference;
-    if (!daysDifference) key = GROUP_VARIANT.DATE.NONE;
-    else {
+    if (daysDifference == null) {
+      key = GROUP_VARIANT.DATE.NONE;
+    } else {
       if (daysDifference == -1) key = GROUP_VARIANT.DATE.YESTERDAY;
       if (daysDifference == 0) key = GROUP_VARIANT.DATE.TODAY;
       if (daysDifference == 1) key = GROUP_VARIANT.DATE.TOMORROW;

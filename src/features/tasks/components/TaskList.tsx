@@ -16,7 +16,7 @@ const TaskList = () => {
     },
   });
   const groups = useProcessedTasks(data ?? []);
-
+  console.log(groups);
   return (
     <Flex width="full" gap={2} px={5} my={5} overflow-x="scroll" flex={1}>
       <For each={groups}>
