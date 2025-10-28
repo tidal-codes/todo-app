@@ -1,4 +1,4 @@
-import { groupVariants } from "./filterVariants";
+import { groupVariants, sortVariants } from "./filterVariants";
 import { GROUP_VARIANT } from "./group";
 
 export const groupByOption = {
@@ -20,5 +20,17 @@ export const groupByOption = {
       [GROUP_VARIANT.PRIORITY.MEDIUM]: [],
       [GROUP_VARIANT.PRIORITY.HIGH]: [],
     }),
+  },
+};
+
+export const sortByOptions = {
+  DATE: {
+    action: sortVariants.DATE,
+  },
+  PRIORITY: {
+    action: sortVariants.PRIORITY,
+  },
+  TITLE: {
+    action: sortVariants.TITLE,
   },
 };

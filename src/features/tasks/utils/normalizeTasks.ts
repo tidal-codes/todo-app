@@ -1,8 +1,6 @@
 import type { GroupBy, Task } from "@/shared/types";
 import { GROUP_TITLE } from "../constants/group";
-type groupedTasks = {
-  [key: string]: Task[];
-};
+import type { groupedTasks } from "@/shared/types";
 export function normalizeTasks(groupedTasks: groupedTasks, groupBy: GroupBy) {
   const result = Object.entries(groupedTasks).map(([key, array]) => {
     return {

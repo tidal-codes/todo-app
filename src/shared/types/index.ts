@@ -1,4 +1,7 @@
 export type Priority = "0" | "1" | "2" | "3";
+export type GroupedTasks = {
+  [key: string]: Task[];
+}[];
 export type RawTask = {
   id: string;
   user_id: string;
