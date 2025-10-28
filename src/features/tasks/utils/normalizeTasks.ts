@@ -4,10 +4,11 @@ type groupedTasks = {
   [key: string]: Task[];
 };
 export function normalizeTasks(groupedTasks: groupedTasks, groupBy: GroupBy) {
-  return Object.entries(groupedTasks).map(([key, array]) => {
+  const result = Object.entries(groupedTasks).map(([key, array]) => {
     return {
       groupTitle: GROUP_TITLE[groupBy][key],
       tasks: [...array],
     };
   });
+  return result.filter((item) => item.tasks.length !== 0);
 }

@@ -1,7 +1,7 @@
 import { Box, For } from "@chakra-ui/react";
 import type { Task as TypeTask } from "@/shared/types";
 import Task from "./Task";
-import { useMemo } from "react";
+
 const TaskGroup = ({
   groupTitle,
   tasks,
@@ -9,17 +9,16 @@ const TaskGroup = ({
   groupTitle: string;
   tasks: TypeTask[];
 }) => {
-  const taskList = useMemo(() => {
-    return tasks.map((item) => <Task key={item.id} title={item.title} />);
-  }, [tasks]);
-
-  if (tasks.length === 0) return null;
   return (
     <Box minWidth={220} maxWidth={350} bg="Background">
       <Box width="full" bg="background" px={2} py={1}>
         <p>{groupTitle}</p>
       </Box>
-      {taskList}
+      <For each={tasks}>
+        {(task) => {
+          return <Task key={task.id} {...task} />;
+        }}
+      </For>
     </Box>
   );
 };

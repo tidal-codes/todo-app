@@ -8,13 +8,13 @@ import { ErrorBoundaryWrapper } from "./shared/components/ErrorBoundaryWrapper";
 import App from "@/App.tsx";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ErrorBoundaryWrapper>
-      <QueryClientProvider client={queryClient}>
-        <Provider>
-          <App />
-        </Provider>
-      </QueryClientProvider>
-    </ErrorBoundaryWrapper>
-  </StrictMode>,
+  // <StrictMode>
+  <ErrorBoundaryWrapper>
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <App />
+      </Provider>
+    </QueryClientProvider>
+  </ErrorBoundaryWrapper>,
+  // </StrictMode>,
 );
