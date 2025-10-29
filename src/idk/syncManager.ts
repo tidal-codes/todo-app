@@ -1,16 +1,28 @@
-import { db } from "@/app/db/indexedDB";
+import { dbResetTasks, dbGetAllTasks } from "@/app/db/indexedDB";
 import { queryClient } from "./query";
-// export async function initSync() {
-//     const localTasks = await db.tasks.toArray();
-//     if (localTasks.length) {
-//         queryClient.setQueryData(['tasks'], localTasks);
-//     }
-//     try {
-//         await queryClient.prefetchQuery(['tasks'], supabaseGetTasks, {
-//             // onSuccess will be handled by useQuery's onSuccess too if provided
-//         });
-//     } catch (err) {
-//         // network error: keep localTasks, we'll sync later
-//         console.warn("prefetch supabase failed, offline or server down", err);
-//     }
-// }
+import { supabaseGetTasks } from "@/features/api/tasksService";
+import { preprocessTask } from "@/features/tasks/utils/preprocessTasks";
+export async function initSync() {
+  const localTasks = await dbGetAllTasks();
+  console.log("localTasks", localTasks);
+  if (localTasks.length) {
+    queryClient.setQueryData(
+      ["tasks"],
+      localTasks.map((task) => preprocessTask(task)),
+    );
+  }
+  try {
+    const data = await queryClient.fetchQuery({
+      queryKey: ["tasks"],
+      queryFn: async () => {
+        const tasks = await supabaseGetTasks();
+        await dbResetTasks(tasks);
+        return tasks.map((task) => preprocessTask(task));
+      },
+    });
+    queryClient.setQueryData(["tasks"], data);
+  } catch (err) {
+    // network error: keep localTasks, we'll sync later
+    console.warn("prefetch supabase failed, offline or server down", err);
+  }
+}

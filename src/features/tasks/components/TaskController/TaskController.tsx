@@ -1,6 +1,7 @@
 import { Box, Button, Input } from "@chakra-ui/react";
 import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import TaskFilter from "./TaskFilter";
+import TaskDialog from "@/shared/ui/TaskDialog";
 
 const TaskController = () => {
   return (
@@ -12,7 +13,9 @@ const TaskController = () => {
       py={3}
       px={5}
     >
-      <Button>فعالیت جدید</Button>
+      <TaskDialog>
+        <Button>فعالیت جدید</Button>
+      </TaskDialog>
       <Box
         display="flex"
         alignItems="center"

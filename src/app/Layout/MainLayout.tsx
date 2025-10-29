@@ -4,7 +4,7 @@ import Header from "@/widgets/Header";
 import { Outlet } from "react-router-dom";
 import { Box, Button, Input } from "@chakra-ui/react";
 import { FunnelSimpleIcon } from "@phosphor-icons/react";
-import TaskView from "@/features/tasks/components/TaskView";
+import TaskContainer from "@/features/tasks/components/TaskContainer";
 const MainLayout = () => {
   return (
     <div className="app-layout" style={{ display: "flex", width: "full" }}>
@@ -21,7 +21,7 @@ const MainLayout = () => {
         <Header />
         <main style={{ display: "flex", flex: "1", flexDirection: "column" }}>
           {/* <Outlet /> */}
-          <TaskView />
+          <TaskContainer />
         </main>
       </div>
     </div>
