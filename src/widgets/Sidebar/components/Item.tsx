@@ -1,11 +1,11 @@
 import { Button } from "@chakra-ui/react";
 
-const SidebarItem = ({ title }: { title: string }) => {
+const Item = ({ title }: { title: string }) => {
   return (
     <Button
       variant="ghost"
       width="full"
-      justifyContent="flex-start"
+      justifyContent="flex-end"
       _hover={{ bg: "gray.200" }}
     >
       {title}
@@ -13,4 +13,4 @@ const SidebarItem = ({ title }: { title: string }) => {
   );
 };
 
-export default SidebarItem;
+export default Item;

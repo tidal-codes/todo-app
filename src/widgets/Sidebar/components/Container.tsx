@@ -1,19 +1,24 @@
-import { Box, For } from "@chakra-ui/react";
-import SidebarItem from "./SidebarItem";
+import { Box, For, Button } from "@chakra-ui/react";
+import Item from "./Item";
+import Collapsible from "@/shared/ui/collapsible";
+import { FolderKanban } from "lucide-react";
 
 const data = [{ title: "خانه" }, { title: "سطل زباله" }, { title: "تمام شده" }];
+
 const Sidebar = () => {
   return (
     <Box
       bg="background"
-      maxWidth="200px"
+      width="200px"
       height="100vh"
       borderEnd="1px solid"
       borderColor="gray.200"
       px={3}
       py={5}
     >
-      <For each={data}>{(item) => <SidebarItem title={item.title} />}</For>
+      <Collapsible>
+        <For each={data}>{(item) => <Item title={item.title} />}</For>
+      </Collapsible>
     </Box>
   );
 };
