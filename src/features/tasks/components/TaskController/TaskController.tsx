@@ -2,6 +2,7 @@ import { Box, Button, Input } from "@chakra-ui/react";
 import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import TaskFilter from "./TaskFilter";
 import TaskDialog from "@/shared/ui/TaskDialog";
+import TaskSearch from "./TaskSearch";
 
 const TaskController = () => {
   return (
@@ -27,7 +28,7 @@ const TaskController = () => {
             <FunnelSimpleIcon />
           </Button>
         </TaskFilter>
-        <Input placeholder="جستجوی کلمه کلیدی" />
+        <TaskSearch />
       </Box>
     </Box>
   );

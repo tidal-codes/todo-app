@@ -16,3 +16,15 @@ export const sortTasks = (groupedTasks: GroupedTasks, sortBy: SortBy) => {
   }
   return gTasks;
 };
+export const searchTasks = (
+  groupedTasks: GroupedTasks,
+  searchKeyword: string,
+) => {
+  return [...groupedTasks].map((item) => {
+    const tasks = item.tasks.filter((task) =>
+      task.title?.includes(searchKeyword),
+    );
+    return { ...item, tasks };
+  });
+  // console.log(item.tasks.filter(task => task.title?.includes(searchKeyword)))
+};

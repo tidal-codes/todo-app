@@ -5,11 +5,13 @@ import React from "react";
 import { Flag, CalendarDays } from "lucide-react";
 import { PRIORITY } from "../constants/priority";
 import { setTaskComplete } from "@/idk/taskManager";
+import { Tooltip } from "@/shared/ui/Tooltip";
 const Task = ({
   id,
   title,
   priority,
   due_date,
+  dateString,
   relativeDate,
   is_completed,
 }: Task) => {
@@ -49,16 +51,18 @@ const Task = ({
               {PRIORITY.LABLE[priority]}
             </Flex>
           ) : null}
-          <Flex
-            alignItems="center"
-            gap={1}
-            border="1px solid"
-            borderColor="gray.300"
-            px={2}
-          >
-            <CalendarDays size={14} />
-            <span>{relativeDate}</span>
-          </Flex>
+          <Tooltip showArrow content={dateString}>
+            <Flex
+              alignItems="center"
+              gap={1}
+              border="1px solid"
+              borderColor="gray.300"
+              px={2}
+            >
+              <CalendarDays size={14} />
+              <span>{relativeDate}</span>
+            </Flex>
+          </Tooltip>
         </Flex>
       </Flex>
     </Box>

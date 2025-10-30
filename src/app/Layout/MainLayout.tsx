@@ -16,10 +16,18 @@ const MainLayout = () => {
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
+          height: "100vh",
         }}
       >
         <Header />
-        <main style={{ display: "flex", flex: "1", flexDirection: "column" }}>
+        <main
+          style={{
+            display: "flex",
+            flex: "1",
+            flexDirection: "column",
+            overflow: "scroll",
+          }}
+        >
           {/* <Outlet /> */}
           <TaskContainer />
         </main>

@@ -13,9 +13,10 @@ const TaskList = () => {
   const groups = useProcessedTasks(tasks);
   console.log(groups);
   return (
-    <Flex width="full" gap={2} px={5} my={5} overflowX="scroll" flex={1}>
+    <Flex width="full" gap={2} px={5} my={5} flex={1}>
       <For each={groups}>
         {(group, index) => {
+          if (group.tasks.length == 0) return null;
           return (
             <TaskGroup
               key={index}
