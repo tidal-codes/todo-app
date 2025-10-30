@@ -25,11 +25,10 @@ const MainLayout = () => {
             display: "flex",
             flex: "1",
             flexDirection: "column",
-            overflow: "scroll",
+            overflow: "auto",
           }}
         >
-          {/* <Outlet /> */}
-          <TaskContainer />
+          <Outlet />
         </main>
       </div>
     </div>

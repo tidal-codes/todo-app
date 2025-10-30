@@ -14,7 +14,14 @@ export async function supabaseGetTasks() {
   if (error) throw error;
   return data || [];
 }
-
+export async function supabaseGetProjects() {
+  const { data, error } = await supabase
+    .from("projects")
+    .select("*")
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return data || [];
+}
 // export async function supabaseAddTask(task) {
 //   const { data, error } = await supabase
 //     .from("tasks")

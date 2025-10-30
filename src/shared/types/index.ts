@@ -18,5 +18,10 @@ export type GroupedTasks = {
   groupTitle: string;
   tasks: Task[];
 }[];
+export type Project = {
+  id: string;
+  title: string;
+  created_at: string;
+};
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";
 export type GroupBy = "DATE" | "PRIORITY";
