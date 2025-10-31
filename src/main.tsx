@@ -5,16 +5,12 @@ import { system } from "@/app/theme";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./idk/query";
 import { ErrorBoundaryWrapper } from "./shared/components/ErrorBoundaryWrapper";
-import App from "@/App.tsx";
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { routes } from "./app/routes";
+const route = createBrowserRouter(routes);
 createRoot(document.getElementById("root")!).render(
   // <StrictMode>
-  <ErrorBoundaryWrapper>
-    <QueryClientProvider client={queryClient}>
-      <Provider>
-        <App />
-      </Provider>
-    </QueryClientProvider>
-  </ErrorBoundaryWrapper>,
+
+  <RouterProvider router={route} />,
   // </StrictMode>,
 );
