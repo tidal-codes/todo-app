@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Item = ({
+const ListItem = ({
   id,
   title,
   active,
@@ -25,4 +25,4 @@ const Item = ({
   );
 };
 
-export default Item;
+export default ListItem;

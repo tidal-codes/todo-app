@@ -7,18 +7,14 @@ import { initSync } from "@/idk/syncManager";
 import { useEffect } from "react";
 const MainLayout = () => {
   const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("user changed");
     if (user) {
       (async () => {
         await initSync();
       })();
-    } else {
-      navigate("/auth");
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="app-layout" style={{ display: "flex", width: "full" }}>

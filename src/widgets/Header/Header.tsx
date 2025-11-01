@@ -1,7 +1,9 @@
-import { Box, Button, Avatar } from "@chakra-ui/react";
+import { useAuth } from "@/features/auth/context/AuthProvider";
+import { Box, Button, Avatar, Text, Flex } from "@chakra-ui/react";
 import { CloudSlash, GearSix } from "@phosphor-icons/react";
 
 const Header = () => {
+  const { user } = useAuth();
   return (
     <Box
       bg="background"
@@ -14,20 +16,24 @@ const Header = () => {
       py={1}
       px={5}
     >
-      <Box display="flex" alignItems="center" gap="2">
+      <Flex alignItems="center" gap="2">
         <Button variant="subtle" width="40px" height="40px">
           <GearSix />
         </Button>
         <Button variant="subtle" width="40px" height="40px">
           <CloudSlash />
         </Button>
-      </Box>
-      <Box>
+        <Button height={8} px={2} fontSize="sm">
+          پروژه جدید
+        </Button>
+      </Flex>
+      <Flex alignItems="center" gap={2}>
+        <Text fontSize="sm">{user?.email}</Text>
         <Avatar.Root size="md">
           <Avatar.Fallback name="Segun Adebayo" />
           <Avatar.Image src="https://bit.ly/sage-adebayo" />
         </Avatar.Root>
-      </Box>
+      </Flex>
     </Box>
   );
 };

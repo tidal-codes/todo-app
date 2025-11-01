@@ -3,6 +3,30 @@ import Auth from "@/features/auth/components/Container";
 import App from "@/App";
 import MainLayout from "./Layout/MainLayout";
 import Login from "@/features/auth/components/Login";
+import ProtectedRoute from "./ProtectedRoutes";
+
+// export const routes = [
+//   {
+//     path: "/",
+//     element: <App />,
+//     children: [
+//       {
+//         path: "app",
+//         element: <MainLayout />,
+//         children: [
+//           {
+//             path: ":projectID",
+//             element: <TaskContainer />,
+//           }
+//         ],
+//       },
+//       {
+//         path: "auth/:authPage",
+//         element: <Auth />,
+//       }
+//     ]
+//   },
+// ];
 
 export const routes = [
   {
@@ -10,30 +34,23 @@ export const routes = [
     element: <App />,
     children: [
       {
-        path: "app",
-        element: <MainLayout />,
+        element: <ProtectedRoute />,
         children: [
           {
-            path: ":projectID",
-            element: <TaskContainer />,
-          },
-          {
-            path: "",
-            element: <div>404</div>,
-          },
-          {
-            path: "*",
-            element: <div>404</div>,
+            path: "app",
+            element: <MainLayout />,
+            children: [
+              {
+                path: ":projectID",
+                element: <TaskContainer />,
+              },
+            ],
           },
         ],
       },
       {
         path: "auth/:authPage",
         element: <Auth />,
-      },
-      {
-        path: "*",
-        element: <div>404</div>,
       },
     ],
   },

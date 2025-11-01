@@ -16,6 +16,7 @@ interface AuthInfo {
 }
 interface AuthContextType {
   user: User | null;
+  loading: boolean;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   signIn: ({ email, password }: AuthInfo) => Promise<void>;
   signUp: ({ email, password }: AuthInfo) => Promise<void>;
@@ -25,11 +26,13 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
       setUser(data?.session?.user ?? null);
+      setLoading(false);
     });
     const { data: listener } = supabase.auth.onAuthStateChange((_, session) => {
       setUser((prev) => {
@@ -37,13 +40,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         if (prev?.id === newUser?.id) return prev;
         return newUser;
       });
+      setLoading(false);
     });
     return () => listener.subscription.unsubscribe();
   }, []);
-
-  useEffect(() => {
-    if (user) navigate("/app");
-  }, [user]);
 
   async function signUpFn({ email, password }: AuthInfo) {
     const { data, error } = await supabase.auth.signUp({
@@ -61,11 +61,15 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     });
     if (error) throw new Error(`${error}`);
     setUser(data?.session?.user);
+    navigate("/app");
   }
 
   const signIn = useCallback(signInFn, []);
   const signUp = useCallback(signUpFn, []);
-  const value = useMemo(() => ({ user, setUser, signIn, signUp }), [user]);
+  const value = useMemo(
+    () => ({ user, loading, setUser, signIn, signUp }),
+    [user],
+  );
   return <AuthContext value={value}>{children}</AuthContext>;
 };
 

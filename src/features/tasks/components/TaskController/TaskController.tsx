@@ -14,9 +14,6 @@ const TaskController = () => {
       py={3}
       px={5}
     >
-      <TaskDialog>
-        <Button>فعالیت جدید</Button>
-      </TaskDialog>
       <Box
         display="flex"
         alignItems="center"
