@@ -16,21 +16,19 @@ const Header = () => {
       justifyContent="space-between"
       borderBottom="1px solid"
       borderColor="gray.200"
-      py={1}
+      py={2}
       px={5}
     >
       <Flex alignItems="center" gap="2">
+        <NewProject>
+          <Button fontSize="sm">پروژه جدید</Button>
+        </NewProject>
         <Tooltip content="تنظیمات" showArrow>
           <Button variant="subtle" width="40px" height="40px">
             <Settings />
           </Button>
         </Tooltip>
         <Sync />
-        <NewProject>
-          <Button height={8} px={2} fontSize="sm">
-            پروژه جدید
-          </Button>
-        </NewProject>
       </Flex>
       <Flex alignItems="center" gap={2}>
         <Text fontSize="sm">{user?.email}</Text>

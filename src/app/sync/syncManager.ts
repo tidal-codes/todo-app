@@ -10,7 +10,11 @@ import {
   dbUpdateProject,
 } from "@/features/projects/db/projects";
 import { useSyncStore } from "@/app/store/syncStatus";
+const { setLoading, setError } = useSyncStore.getState();
+
 export async function initSync() {
+  setLoading(true);
+  setError(null);
   const localProjcets = await dbGetAllProjects();
   const localTasks = await dbGetAllTasks();
 
@@ -31,11 +35,7 @@ export async function initSync() {
     });
     await dbResetProjcets(projects);
     queryClient.setQueryData(["projects"], projects);
-  } catch (err) {
-    console.warn("prefetch supabase failed, offline or server down", err);
-  }
 
-  try {
     const tasks = await queryClient.fetchQuery({
       queryKey: ["tasks"],
       queryFn: async () => {
@@ -45,14 +45,35 @@ export async function initSync() {
       },
     });
     queryClient.setQueryData(["tasks"], tasks);
-  } catch (err) {
-    // network error: keep localTasks, we'll sync later
-    console.warn("prefetch supabase failed, offline or server down", err);
+  } catch (error) {
+    console.warn("prefetch supabase failed, offline or server down", error);
+    setError("yup . some error");
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function sync() {
+  setLoading(true);
+  try {
+    const projects = await supabaseGetProjects();
+    await dbResetProjcets(projects);
+    queryClient.setQueryData(["projects"], projects);
+
+    const tasks = await supabaseGetTasks();
+    await dbResetTasks(tasks);
+    queryClient.setQueryData(["tasks"], () => {
+      return tasks.map((task) => preprocessTask(task));
+    });
+  } catch (error) {
+    setError("yup . some error");
+  } finally {
+    setLoading(false);
+    console.log("it is over");
   }
 }
 
 export async function syncProjects() {
-  const { setLoading, setError } = useSyncStore.getState();
   const dirtyProjects = await dbGetDirtyProjects();
   if (!dirtyProjects || dirtyProjects.length === 0) return;
   setLoading(true);

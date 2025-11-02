@@ -4,6 +4,7 @@ import { Tooltip } from "@/shared/ui/Tooltip";
 import { useState, useRef, useEffect } from "react";
 import "./syncAnimation.css";
 import { useSyncStore } from "@/app/store/syncStatus";
+import { sync } from "@/app/sync/syncManager";
 
 const Sync = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -30,7 +31,13 @@ const Sync = () => {
 
   return (
     <Tooltip content="همگام سازی" showArrow>
-      <Button variant="subtle" width="40px" height="40px">
+      <Button
+        variant="subtle"
+        width="40px"
+        height="40px"
+        onClick={sync}
+        disabled={isLoading}
+      >
         <RefreshCw
           ref={iconRef}
           className={`sync-icon ${isRotating ? "rotating" : ""}`}
