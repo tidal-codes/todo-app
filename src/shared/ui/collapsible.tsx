@@ -26,7 +26,7 @@ const Collapsible = ({ children }: { children: React.ReactNode }) => {
           </Flex>
         </Button>
       </BaseCollapsible.Trigger>
-      <BaseCollapsible.Content height={150}>{children}</BaseCollapsible.Content>
+      <BaseCollapsible.Content>{children}</BaseCollapsible.Content>
     </BaseCollapsible.Root>
   );
 };

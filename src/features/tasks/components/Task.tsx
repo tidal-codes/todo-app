@@ -4,7 +4,7 @@ import { DotsThree } from "@phosphor-icons/react";
 import React from "react";
 import { Flag, CalendarDays } from "lucide-react";
 import { PRIORITY } from "../constants/priority";
-import { setTaskComplete } from "@/idk/taskManager";
+import { setTaskComplete } from "../services/taskServices";
 import { Tooltip } from "@/shared/ui/Tooltip";
 const Task = ({
   id,

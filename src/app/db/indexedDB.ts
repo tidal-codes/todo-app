@@ -7,7 +7,7 @@ class TasksDB extends Dexie {
   constructor() {
     super("TasksDB");
     this.version(1).stores({
-      projects: "id , title , created_at",
+      projects: "id , title , dirty , created_at",
       tasks: "id , projectId , title",
     });
     this.projects = this.table("projects");

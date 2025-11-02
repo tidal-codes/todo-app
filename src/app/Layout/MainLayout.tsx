@@ -1,9 +1,9 @@
 // src/app/layouts/MainLayout.tsx
-import Sidebar from "@/widgets/Sidebar";
-import Header from "@/widgets/Header";
-import { Outlet, useNavigate } from "react-router-dom";
+import Sidebar from "@/shared/components/Sidebar";
+import Header from "@/shared/components/Header";
+import { Outlet } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthProvider";
-import { initSync } from "@/idk/syncManager";
+import { initSync } from "@/app/sync/syncManager";
 import { useEffect } from "react";
 const MainLayout = () => {
   const { user } = useAuth();

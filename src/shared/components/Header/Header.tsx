@@ -1,6 +1,9 @@
 import { useAuth } from "@/features/auth/context/AuthProvider";
+import NewProject from "@/features/projects/components/NewProject";
+import { Tooltip } from "@/shared/ui/Tooltip";
 import { Box, Button, Avatar, Text, Flex } from "@chakra-ui/react";
-import { CloudSlash, GearSix } from "@phosphor-icons/react";
+import { Settings } from "lucide-react";
+import Sync from "./Sync";
 
 const Header = () => {
   const { user } = useAuth();
@@ -17,15 +20,17 @@ const Header = () => {
       px={5}
     >
       <Flex alignItems="center" gap="2">
-        <Button variant="subtle" width="40px" height="40px">
-          <GearSix />
-        </Button>
-        <Button variant="subtle" width="40px" height="40px">
-          <CloudSlash />
-        </Button>
-        <Button height={8} px={2} fontSize="sm">
-          پروژه جدید
-        </Button>
+        <Tooltip content="تنظیمات" showArrow>
+          <Button variant="subtle" width="40px" height="40px">
+            <Settings />
+          </Button>
+        </Tooltip>
+        <Sync />
+        <NewProject>
+          <Button height={8} px={2} fontSize="sm">
+            پروژه جدید
+          </Button>
+        </NewProject>
       </Flex>
       <Flex alignItems="center" gap={2}>
         <Text fontSize="sm">{user?.email}</Text>

@@ -23,8 +23,8 @@ const config = defineConfig({
         },
       },
       fonts: {
-        body: { value: "system-ui, sans-serif" },
-        heading: { value: "system-ui, sans-serif" },
+        body: { value: "iranYekan, sans-serif" },
+        heading: { value: "iranYekan, sans-serif" },
       },
     },
     semanticTokens: {

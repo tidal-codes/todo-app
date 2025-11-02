@@ -1,5 +1,5 @@
-import { queryClient } from "./query";
 import type { Task } from "@/shared/types";
+import { queryClient } from "@/app/query/queryClient";
 export const setTaskComplete = (id: string) => {
   const data = queryClient.getQueryData(["tasks"]) as Task[] | undefined;
   if (!data) return;

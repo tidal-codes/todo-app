@@ -1,4 +1,4 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 const ListItem = ({
@@ -20,7 +20,7 @@ const ListItem = ({
       backgroundColor={active ? "gray.200" : "transparent"}
       onClick={() => navigate(`${id}`)}
     >
-      {title}
+      <Text fontSize="sm">{title}</Text>
     </Button>
   );
 };

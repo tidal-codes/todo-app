@@ -1,8 +1,16 @@
 import type { Project } from "@/shared/types";
-import { db } from "./indexedDB";
+import { db } from "@/app/db/indexedDB";
 
 async function dbGetAllProjects(): Promise<Project[]> {
   return await db.projects.toArray();
+}
+
+async function dbGetDirtyProjects(): Promise<Project[] | null> {
+  const projects = await db.projects.where("dirty").equals(1).toArray();
+  if (!projects.length) {
+    return null;
+  }
+  return projects;
 }
 
 async function dbAddProject(project: Project): Promise<void> {
@@ -33,4 +41,5 @@ export {
   dbUpdateProject,
   dbDeleteProject,
   dbResetProjcets,
+  dbGetDirtyProjects,
 };

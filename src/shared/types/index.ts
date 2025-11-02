@@ -21,6 +21,7 @@ export type GroupedTasks = {
 export type Project = {
   id: string;
   title: string;
+  dirty?: 0 | 1;
   created_at: string;
 };
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";

@@ -1,4 +1,4 @@
-import { supabase } from "@/features/api/tasksService";
+import { supabase } from "@/app/supabase/supabase";
 import type { User } from "@supabase/supabase-js";
 import React, {
   createContext,

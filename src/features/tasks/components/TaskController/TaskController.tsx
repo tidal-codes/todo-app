@@ -1,7 +1,7 @@
 import { Box, Button, Input } from "@chakra-ui/react";
 import { FunnelSimpleIcon } from "@phosphor-icons/react";
 import TaskFilter from "./TaskFilter";
-import TaskDialog from "@/shared/ui/TaskDialog";
+import TaskDialog from "@/shared/ui/Dialog";
 import TaskSearch from "./TaskSearch";
 
 const TaskController = () => {

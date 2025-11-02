@@ -1,10 +1,10 @@
-import { AuthProvider } from "./features/auth/context/AuthProvider";
+import { AuthProvider } from "@/features/auth/context/AuthProvider";
 import { QueryClientProvider } from "@tanstack/react-query";
-import MainLayout from "./app/Layout/MainLayout";
-import { Provider } from "./components/ui/provider";
-import { queryClient } from "./idk/query";
-import { ErrorBoundaryWrapper } from "./shared/components/ErrorBoundaryWrapper";
+import { Provider } from "@/app/provider/provider";
+import { queryClient } from "@/app/query/queryClient";
+import { ErrorBoundaryWrapper } from "@/shared/components/ErrorBoundaryWrapper";
 import { Outlet } from "react-router-dom";
+import "@/main.css";
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
 import type { Task } from "@/shared/types";
-import { db } from "./indexedDB";
+import { db } from "@/app/db/indexedDB";
 
 async function dbGetAllTasks(): Promise<Task[]> {
   return await db.tasks.toArray();

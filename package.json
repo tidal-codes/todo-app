@@ -29,6 +29,7 @@
     "dexie": "^4.2.1",
     "lucide": "^0.548.0",
     "lucide-react": "^0.548.0",
+    "nanoid": "^5.1.6",
     "next-themes": "^0.4.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
