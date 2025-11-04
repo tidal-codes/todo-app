@@ -1,0 +1,14 @@
+.avatar-container {
+  display: inline-flex; /* اجازه میده اندازه container با محتوا هماهنگ باشه */
+  align-items: center;
+}
+
+.avatar-container div {
+  margin-left: -15px;
+}
+
+/* اولین آواتار فاصله منفی نداشته باشه */
+.avatar-container div:first-child {
+  margin-left: 0;
+}
+

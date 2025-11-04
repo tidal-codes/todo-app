@@ -21,8 +21,17 @@ export type GroupedTasks = {
 export type Project = {
   id: string;
   title: string;
-  dirty?: 0 | 1;
+  owner_id: string;
   created_at: string;
+};
+export type User = {
+  id: string;
+  tag: string;
+  first_name: string | null;
+  last_name: string | null;
+  email?: string;
+  created_at?: string;
+  profile_url: string | null;
 };
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";
 export type GroupBy = "DATE" | "PRIORITY";

@@ -1,5 +1,5 @@
 import { useAuth } from "@/features/auth/context/AuthProvider";
-import NewProject from "@/features/projects/components/NewProject";
+import NewProject from "@/features/projects/components/NewProjectDialog";
 import { Tooltip } from "@/shared/ui/Tooltip";
 import { Box, Button, Avatar, Text, Flex } from "@chakra-ui/react";
 import { Settings } from "lucide-react";

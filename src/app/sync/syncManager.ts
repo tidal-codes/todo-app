@@ -15,18 +15,18 @@ const { setLoading, setError } = useSyncStore.getState();
 export async function initSync() {
   setLoading(true);
   setError(null);
-  const localProjcets = await dbGetAllProjects();
-  const localTasks = await dbGetAllTasks();
+  // const localProjcets = await dbGetAllProjects();
+  // const localTasks = await dbGetAllTasks();
 
-  if (localProjcets.length) {
-    queryClient.setQueryData(["projects"], localProjcets);
-  }
-  if (localTasks.length) {
-    queryClient.setQueryData(
-      ["tasks"],
-      localTasks.map((task) => preprocessTask(task)),
-    );
-  }
+  // if (localProjcets.length) {
+  //   queryClient.setQueryData(["projects"], localProjcets);
+  // }
+  // if (localTasks.length) {
+  //   queryClient.setQueryData(
+  //     ["tasks"],
+  //     localTasks.map((task) => preprocessTask(task)),
+  //   );
+  // }
 
   try {
     const projects = await queryClient.fetchQuery({
@@ -57,11 +57,11 @@ export async function sync() {
   setLoading(true);
   try {
     const projects = await supabaseGetProjects();
-    await dbResetProjcets(projects);
+    // await dbResetProjcets(projects);
     queryClient.setQueryData(["projects"], projects);
 
     const tasks = await supabaseGetTasks();
-    await dbResetTasks(tasks);
+    // await dbResetTasks(tasks);
     queryClient.setQueryData(["tasks"], () => {
       return tasks.map((task) => preprocessTask(task));
     });

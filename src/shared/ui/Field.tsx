@@ -20,27 +20,25 @@ const Field = <T extends FieldValues>({
   onChange,
 }: FieldProps<T>) => {
   return (
-    <div>
-      <BaseField.Root invalid={Boolean(error)}>
-        <BaseField.Label>{label}</BaseField.Label>
-        {register && registerValue ? (
-          <Input
-            key={`${Math.random()}`}
-            {...register(registerValue)}
-            placeholder="me@example.com"
-          />
-        ) : value !== undefined && onChange ? (
-          <Input
-            placeholder="me@example.com"
-            value={value}
-            onChange={(e) => onChange(e.target.value)}
-          />
-        ) : (
-          <Input placeholder="me@example.com" />
-        )}
-        <BaseField.ErrorText>{error}</BaseField.ErrorText>
-      </BaseField.Root>
-    </div>
+    <BaseField.Root invalid={Boolean(error)}>
+      <BaseField.Label>{label}</BaseField.Label>
+      {register && registerValue ? (
+        <Input
+          key={`${Math.random()}`}
+          {...register(registerValue)}
+          placeholder="me@example.com"
+        />
+      ) : value !== undefined && onChange ? (
+        <Input
+          placeholder="me@example.com"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+        />
+      ) : (
+        <Input placeholder="me@example.com" />
+      )}
+      <BaseField.ErrorText>{error}</BaseField.ErrorText>
+    </BaseField.Root>
   );
 };
 

@@ -5,6 +5,7 @@ import { useFilter } from "../../context/filter";
 import { taskviewOptions } from "../../constants/filterMenu";
 import { useEffect, useState } from "react";
 import Popover from "@/shared/ui/Popover";
+import TaskSearch from "./TaskSearch";
 
 const TaskFilter = ({ children }: { children: ReactNode }) => {
   const { filter, setFilter } = useFilter();
@@ -25,6 +26,7 @@ const TaskFilter = ({ children }: { children: ReactNode }) => {
     <Popover ButtonComponent={children}>
       {/* <Popover.Title fontWeight="medium">Naruto Form</Popover.Title> */}
       <Flex direction="column" gap={2}>
+        <TaskSearch />
         <For each={taskviewOptions}>
           {(option) => {
             return (

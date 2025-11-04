@@ -1,14 +1,20 @@
 import { Dialog as BaseDialog, Portal } from "@chakra-ui/react";
 import React from "react";
 
-interface DialogProps {
+type DialogProps = React.ComponentPropsWithoutRef<typeof BaseDialog.Content> & {
   children: React.ReactNode;
   trigger: React.ReactElement;
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};
 
-const Dialog = ({ children, trigger, open, setOpen }: DialogProps) => {
+const Dialog = ({
+  children,
+  trigger,
+  open,
+  setOpen,
+  ...props
+}: DialogProps) => {
   return (
     <BaseDialog.Root
       placement="center"
@@ -20,7 +26,7 @@ const Dialog = ({ children, trigger, open, setOpen }: DialogProps) => {
       <Portal>
         <BaseDialog.Backdrop />
         <BaseDialog.Positioner>
-          <BaseDialog.Content>
+          <BaseDialog.Content {...props}>
             <BaseDialog.Body dir="rtl">{children}</BaseDialog.Body>
           </BaseDialog.Content>
         </BaseDialog.Positioner>

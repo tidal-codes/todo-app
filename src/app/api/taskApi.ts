@@ -1,11 +1,11 @@
 import { supabase } from "@/app/supabase/supabase";
 import type { Task } from "@/shared/types";
 
-export async function supabaseGetTasks() {
+export async function supabaseGetTasks(projectId: string) {
   const { data, error } = await supabase
     .from("tasks")
     .select("*")
-    .order("created_at", { ascending: false });
+    .eq("project_id", projectId);
 
   if (error) throw error;
   return data || [];
