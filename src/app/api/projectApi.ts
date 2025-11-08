@@ -1,5 +1,10 @@
 import { supabase } from "@/app/supabase/supabase";
-import type { Project } from "@/shared/types";
+import type { User } from "@/shared/types";
+
+interface ProjectMember {
+  user_id: string;
+  users: User;
+}
 
 export async function supabaseGetProjects() {
   const { data, error } = await supabase
@@ -12,18 +17,26 @@ export async function supabaseGetProjects() {
 export async function supabaseAddProject({
   id,
   title,
+  description,
+  icon,
+  color,
 }: {
   id: string;
   title: string;
+  description: string;
+  icon: string;
+  color: string;
 }) {
   const { data, error } = await supabase
     .from("projects")
-    .insert([{ id, title }])
+    .insert([{ id, title, description, icon, color }])
     .select();
   if (error) throw error;
   return data?.[0];
 }
-export async function supabaseGetProjectMembers(projectId: string) {
+export async function supabaseGetProjectMembers(
+  projectId: string,
+): Promise<ProjectMember[]> {
   const { data, error } = await supabase
     .from("project_members")
     .select("user_id, users(*)")

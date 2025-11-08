@@ -1,5 +1,5 @@
 import { Input } from "@chakra-ui/react";
-import { useFilter } from "../../context/filter";
+import { useFilter } from "../context/filter";
 import { useDebounce } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 

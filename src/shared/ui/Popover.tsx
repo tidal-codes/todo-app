@@ -13,8 +13,12 @@ const Popover = ({ children, ButtonComponent }: PopoverProps) => {
       </BasePopover.Trigger>
       <Portal>
         <BasePopover.Positioner>
-          <BasePopover.Content>
-            <BasePopover.Body>{children}</BasePopover.Body>
+          <BasePopover.Content
+            border="1px solid"
+            borderColor="gray.500"
+            width="fit-content"
+          >
+            {children}
           </BasePopover.Content>
         </BasePopover.Positioner>
       </Portal>

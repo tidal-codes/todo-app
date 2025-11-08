@@ -5,6 +5,9 @@ import { Outlet } from "react-router-dom";
 import { useAuth } from "@/features/auth/context/AuthProvider";
 import { initSync } from "@/app/sync/syncManager";
 import { useEffect } from "react";
+import { Flex, Box } from "@chakra-ui/react";
+import { useColorMode } from "../theme/color-mode";
+
 const MainLayout = () => {
   const { user } = useAuth();
 
@@ -17,9 +20,8 @@ const MainLayout = () => {
   }, [user]);
 
   return (
-    <div className="app-layout" style={{ display: "flex", width: "full" }}>
-      <Sidebar />
-      <div
+    <Box className="app-layout" style={{ display: "flex", width: "full" }}>
+      <Box
         className="main-content"
         style={{
           flex: "1",
@@ -30,18 +32,14 @@ const MainLayout = () => {
         }}
       >
         <Header />
-        <main
-          style={{
-            display: "flex",
-            flex: "1",
-            flexDirection: "column",
-            overflow: "auto",
-          }}
-        >
-          <Outlet />
-        </main>
-      </div>
-    </div>
+        <Flex>
+          <Sidebar />
+          <Flex flexDirection="column" flex={1}>
+            <Outlet />
+          </Flex>
+        </Flex>
+      </Box>
+    </Box>
   );
 };
 export default MainLayout;

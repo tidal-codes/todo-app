@@ -1,10 +1,9 @@
-import TaskContainer from "@/features/tasks/components/TaskContainer";
 import Auth from "@/features/auth/components/Container";
 import App from "@/App";
 import MainLayout from "../Layout/MainLayout";
-
 import ProtectedRoute from "./ProtectedRoutes";
 import EmptyProjectPage from "@/features/projects/pages/EmptyProjectPage";
+import ProjectView from "@/features/projects/pages/ProjectView";
 
 export const routes = [
   {
@@ -24,7 +23,7 @@ export const routes = [
               },
               {
                 path: ":projectID",
-                element: <TaskContainer />,
+                element: <ProjectView />,
               },
             ],
           },

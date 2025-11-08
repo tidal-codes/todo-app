@@ -26,8 +26,14 @@ const Dialog = ({
       <Portal>
         <BaseDialog.Backdrop />
         <BaseDialog.Positioner>
-          <BaseDialog.Content {...props}>
-            <BaseDialog.Body dir="rtl">{children}</BaseDialog.Body>
+          <BaseDialog.Content
+            border="1px solid"
+            borderColor="gray.500"
+            borderRadius="sm"
+            dir="rtl"
+            {...props}
+          >
+            {children}
           </BaseDialog.Content>
         </BaseDialog.Positioner>
       </Portal>

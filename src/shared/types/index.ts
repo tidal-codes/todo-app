@@ -21,6 +21,9 @@ export type GroupedTasks = {
 export type Project = {
   id: string;
   title: string;
+  icon: string;
+  color: string;
+  description: string;
   owner_id: string;
   created_at: string;
 };

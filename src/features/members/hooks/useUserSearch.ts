@@ -1,4 +1,5 @@
 import { supabaseSearchUser } from "@/app/api/usersApi";
+import { queryClient } from "@/app/query/queryClient";
 import type { User } from "@/shared/types";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "@uidotdev/usehooks";
@@ -21,6 +22,11 @@ export function useUserSearch() {
     }
   }, [debouncedValue]);
 
+  const reset = () => {
+    setSearch("");
+    queryClient.setQueryData(["searchUser", debouncedValue], []);
+  };
+
   return {
     search,
     setSearch,
@@ -28,5 +34,6 @@ export function useUserSearch() {
     isLoading: searchQuery.isLoading,
     isError: searchQuery.isError,
     refetch: searchQuery.refetch,
+    reset,
   };
 }

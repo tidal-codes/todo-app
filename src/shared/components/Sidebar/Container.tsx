@@ -1,5 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import SidebarProjectsList from "@/features/projects/components/SidebarList";
+import { Plus } from "lucide-react";
+import NewProject from "@/features/projects/components/newProjectDialog";
 
 const Sidebar = () => {
   return (
@@ -12,6 +14,13 @@ const Sidebar = () => {
       px={3}
       py={5}
     >
+      <Box mb={3}>
+        <NewProject>
+          <Button variant="outline" width="full" justifyContent="end">
+            پروژه جدید <Plus />
+          </Button>
+        </NewProject>
+      </Box>
       <SidebarProjectsList />
     </Box>
   );

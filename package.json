@@ -19,6 +19,8 @@
   "dependencies": {
     "@chakra-ui/cli": "^3.28.0",
     "@chakra-ui/react": "^3.28.0",
+    "@emoji-mart/data": "^1.2.1",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.14.0",
     "@hookform/resolvers": "^5.2.2",
     "@phosphor-icons/react": "^2.1.10",
@@ -27,6 +29,8 @@
     "@uidotdev/usehooks": "^2.4.1",
     "date-fns-jalali": "4.1.0-0",
     "dexie": "^4.2.1",
+    "emoji-mart": "^5.6.0",
+    "frimousse": "^0.3.0",
     "lucide": "^0.548.0",
     "lucide-react": "^0.548.0",
     "nanoid": "^5.1.6",

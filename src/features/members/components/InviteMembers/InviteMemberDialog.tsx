@@ -7,21 +7,24 @@ import { useUserSearch } from "../../hooks/useUserSearch";
 import MembersList from "./MembersList";
 import SearchInput from "./SearchInput";
 
-const AddMembersDialog = ({ children }: { children: React.ReactElement }) => {
+const InviteMembersDialog = ({
+  children,
+}: {
+  children: React.ReactElement;
+}) => {
   const [open, setOpen] = useState(false);
-  const { search, setSearch, users, isLoading } = useUserSearch();
+  const { search, setSearch, users, isLoading, reset } = useUserSearch();
 
   useEffect(() => {
     if (open) {
-      setSearch("");
+      reset();
     }
   }, [open]);
 
   return (
     <Dialog trigger={children} open={open} setOpen={setOpen} maxWidth="350px">
       <Box>
-        {" "}
-        <CloseButton size="sm" onClick={() => setOpen(false)} />{" "}
+        <CloseButton size="sm" onClick={() => setOpen(false)} />
       </Box>
       <Flex justifyContent="center">
         <Image src={inviteMembers} width="150px" />
@@ -48,4 +51,4 @@ const AddMembersDialog = ({ children }: { children: React.ReactElement }) => {
   );
 };
 
-export default AddMembersDialog;
+export default InviteMembersDialog;

@@ -15,8 +15,24 @@ export function useProjects() {
   });
 
   const addMutation = useMutation({
-    mutationFn: async (title: string) => {
-      const newProject = { id: `project-${nanoid(8)}`, title };
+    mutationFn: async ({
+      title,
+      description,
+      icon,
+      color,
+    }: {
+      title: string;
+      description: string;
+      icon: string;
+      color: string;
+    }) => {
+      const newProject = {
+        id: `project-${nanoid(8)}`,
+        title,
+        description,
+        icon,
+        color,
+      };
       const data = await supabaseAddProject(newProject);
       return data;
     },
@@ -25,39 +41,14 @@ export function useProjects() {
     },
   });
 
-  //   // Update project (مثال)
-  //   const updateMutation = useMutation({
-  //     mutationFn: async (updatedProject: Project) => {
-  //       const res = await supabaseUpdateProject(updatedProject);
-  //       return res;
-  //     },
-  //     onSuccess: (data) => {
-  //       queryClient.setQueryData(["projects"], (old: Project[] = []) =>
-  //         old.map((p) => (p.id === data.id ? data : p))
-  //       );
-  //     },
-  //   });
-
-  //   // Delete project
-  //   const deleteMutation = useMutation({
-  //     mutationFn: async (id: string) => {
-  //       await supabaseDeleteProject(id);
-  //       return id;
-  //     },
-  //     onSuccess: (id) => {
-  //       queryClient.setQueryData(["projects"], (old: Project[] = []) =>
-  //         old.filter((p) => p.id !== id)
-  //       );
-  //     },
-  //   });
+  const getProject = (projectId: string) => {
+    return projects.find((project) => project.id === projectId) || null;
+  };
 
   return {
     projects,
     addProject: addMutation.mutateAsync,
-    // updateProject: updateMutation.mutateAsync,
-    // deleteProject: deleteMutation.mutateAsync,
     isAdding: addMutation.isPending,
-    // isUpdating: updateMutation.isPending,
-    // isDeleting: deleteMutation.isPending,
+    getProject,
   };
 }

@@ -1,13 +1,13 @@
 import RadioCard from "@/shared/ui/RadioCard";
 import { Text, Flex, For } from "@chakra-ui/react";
 import React, { type ReactNode } from "react";
-import { useFilter } from "../../context/filter";
-import { taskviewOptions } from "../../constants/filterMenu";
+import { useFilter } from "../context/filter";
+import { taskviewOptions } from "../constants/filterMenu";
 import { useEffect, useState } from "react";
 import Popover from "@/shared/ui/Popover";
 import TaskSearch from "./TaskSearch";
 
-const TaskFilter = ({ children }: { children: ReactNode }) => {
+const TaskFilterPopover = ({ children }: { children: ReactNode }) => {
   const { filter, setFilter } = useFilter();
   const { groupBy, sortBy } = filter;
   const [taskview, setTaskview] = useState(() => ({ groupBy, sortBy }));
@@ -24,7 +24,6 @@ const TaskFilter = ({ children }: { children: ReactNode }) => {
   };
   return (
     <Popover ButtonComponent={children}>
-      {/* <Popover.Title fontWeight="medium">Naruto Form</Popover.Title> */}
       <Flex direction="column" gap={2}>
         <TaskSearch />
         <For each={taskviewOptions}>
@@ -47,4 +46,4 @@ const TaskFilter = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default TaskFilter;
+export default TaskFilterPopover;

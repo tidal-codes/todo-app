@@ -1,12 +1,9 @@
-import { useAuth } from "@/features/auth/context/AuthProvider";
-import NewProject from "@/features/projects/components/NewProjectDialog";
 import { Tooltip } from "@/shared/ui/Tooltip";
 import { Box, Button, Avatar, Text, Flex } from "@chakra-ui/react";
 import { Settings } from "lucide-react";
 import Sync from "./Sync";
 
 const Header = () => {
-  const { user } = useAuth();
   return (
     <Box
       bg="background"
@@ -20,9 +17,6 @@ const Header = () => {
       px={5}
     >
       <Flex alignItems="center" gap="2">
-        <NewProject>
-          <Button fontSize="sm">پروژه جدید</Button>
-        </NewProject>
         <Tooltip content="تنظیمات" showArrow>
           <Button variant="subtle" width="40px" height="40px">
             <Settings />
@@ -31,7 +25,6 @@ const Header = () => {
         <Sync />
       </Flex>
       <Flex alignItems="center" gap={2}>
-        <Text fontSize="sm">{user?.email}</Text>
         <Avatar.Root size="md">
           <Avatar.Fallback name="Segun Adebayo" />
           <Avatar.Image src="https://bit.ly/sage-adebayo" />

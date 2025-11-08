@@ -12,7 +12,6 @@ const SidebarProjectsList = () => {
     enabled: false,
   });
   const { projectID } = useParams();
-
   return (
     <Collapsible>
       {isLoading ? (
@@ -33,6 +32,8 @@ const SidebarProjectsList = () => {
             <ListItem
               id={item.id}
               title={item.title}
+              icon={item.icon}
+              color={item.color}
               active={item.id === projectID}
             />
           )}
