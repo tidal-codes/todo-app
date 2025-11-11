@@ -27,5 +27,5 @@ export function getRelativeDate(daysDiff: number): string {
 }
 export function getDateString(jalaliDateString: string): string {
   const date = parse(jalaliDateString, "yyyy-M-d", new Date());
-  return format(date, "d MMMM yyyy");
+  return format(date, "yyyy MMMM d");
 }

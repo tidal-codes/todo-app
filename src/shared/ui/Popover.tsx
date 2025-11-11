@@ -14,6 +14,7 @@ const Popover = ({ children, ButtonComponent }: PopoverProps) => {
       <Portal>
         <BasePopover.Positioner>
           <BasePopover.Content
+            dir="rtl"
             border="1px solid"
             borderColor="gray.500"
             width="fit-content"

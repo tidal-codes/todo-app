@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 export function useMembers() {
   const { projectID } = useParams();
-  const { data: members, isLoading } = useQuery<
-    { user_id: string; users: User }[]
-  >({
+  const { data: members, isLoading } = useQuery<{ users: User[] }>({
     queryKey: ["members", projectID],
     queryFn: async () => supabaseGetProjectMembers(projectID!),
   });
+
+  const addMember = (id) => {};
+
   return { members, isLoading };
 }

@@ -15,7 +15,6 @@ const ListItem = ({
   active: boolean;
 }) => {
   const navigate = useNavigate();
-  console.log(color);
   return (
     <Button
       variant="outline"

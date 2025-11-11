@@ -2,8 +2,7 @@ import { supabase } from "@/app/supabase/supabase";
 import type { User } from "@/shared/types";
 
 interface ProjectMember {
-  user_id: string;
-  users: User;
+  users: User[];
 }
 
 export async function supabaseGetProjects() {
@@ -28,19 +27,26 @@ export async function supabaseAddProject({
   color: string;
 }) {
   const { data, error } = await supabase
-    .from("projects")
-    .insert([{ id, title, description, icon, color }])
+    .rpc("create_project_with_owner", {
+      p_project_id: id,
+      p_title: title,
+      p_description: description,
+      p_color: color,
+      p_icon: icon,
+    })
     .select();
   if (error) throw error;
   return data?.[0];
 }
 export async function supabaseGetProjectMembers(
   projectId: string,
-): Promise<ProjectMember[]> {
+): Promise<ProjectMember> {
   const { data, error } = await supabase
     .from("project_members")
-    .select("user_id, users(*)")
+    .select("users(*)")
     .eq("project_id", projectId);
   if (error) throw error;
-  return data;
+  return {
+    users: data ? data.map((item) => item.users).flat() : [],
+  };
 }

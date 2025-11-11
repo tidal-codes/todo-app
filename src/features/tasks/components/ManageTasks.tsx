@@ -1,6 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { IconButton } from "@chakra-ui/react";
-import NewTaskDialog from "./NewTaskDialog";
+import NewTaskDialog from "./newTaskDialog";
 import TaskFilterPopover from "./TaskFilterPopover";
 import { Funnel } from "lucide-react";
 

@@ -1,6 +1,6 @@
 import type { RawTask, Task } from "@/shared/types";
 import { getDateString, getDaysDifference, getRelativeDate } from "./date";
-import { PRIORITY } from "../constants/priority";
+
 export function preprocessTask(task: RawTask): Task {
   if (!task) return task;
   if (!task.due_date) return task;

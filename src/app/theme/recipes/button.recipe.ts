@@ -30,14 +30,18 @@ export const buttonRecipe = defineRecipe({
         borderWidth: "1px",
         borderColor: "gray.300",
       },
-      icon: {
-        backgroundColor: "red.400",
+      rounded: {
+        borderRadius: "full",
+        _hover: {
+          backgroundColor: "gray.100",
+        },
       },
     },
     size: {
       sm: { px: 1, py: 1, fontSize: "sm" },
       md: { height: "7", px: 2, fontSize: "sm" },
       lg: { px: 1, py: 1, fontSize: "lg" },
+      fit: { px: 1, py: 0.5 },
       square: { p: 0 },
     },
   },
