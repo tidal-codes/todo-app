@@ -3,32 +3,43 @@ import { defineRecipe } from "@chakra-ui/react";
 
 export const buttonRecipe = defineRecipe({
   base: {
+    border: "none",
     fontWeight: "normal",
     borderRadius: "xs",
-    // border: "none",
     "& :where(svg)": {
       width: 4,
       height: 4,
-      /* یا از توکن‌ها استفاده کن: width: "4", height: "4" */
+    },
+    _focus: {
+      outlineColor: "primary.600",
+      _dark: {
+        outlineColor: "primary.400",
+      },
     },
   },
   variants: {
     variant: {
       solid: {
-        backgroundColor: "brand.primary.600",
-        _hover: { backgroundColor: "brand.primary.500" },
+        color: "white",
+        backgroundColor: "primary.600",
+        _hover: { backgroundColor: "primary.700" },
         _focus: { backgroundColor: "brand.primary.500" },
+        _dark: {
+          backgroundColor: "primary.400",
+          color: "white",
+          _hover: {
+            backgroundColor: "primary.500",
+          },
+        },
       },
       ghost: {
-        opacity: "0.7",
         _hover: {
-          opacity: "1",
-          backgroundColor: "gray.100",
+          backgroundColor: "grey.100",
+          _dark: { backgroundColor: "grey.800" },
         },
       },
       outline: {
         borderWidth: "1px",
-        borderColor: "gray.300",
       },
       rounded: {
         borderRadius: "full",
@@ -42,7 +53,11 @@ export const buttonRecipe = defineRecipe({
       md: { height: "7", px: 2, fontSize: "sm" },
       lg: { px: 1, py: 1, fontSize: "lg" },
       fit: { px: 1, py: 0.5 },
-      square: { p: 0 },
+      square: {
+        width: "7",
+        height: "7",
+        p: 0,
+      },
     },
   },
   defaultVariants: {

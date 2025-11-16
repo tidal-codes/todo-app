@@ -9,7 +9,14 @@ const TaskList = () => {
   const groups = useProcessedTasks(tasks ? tasks : ([] as Task[]));
 
   return (
-    <Flex width="full" gap={2} px={5} my={5} flex={1}>
+    <Flex
+      backgroundColor="background"
+      width="full"
+      gap={2}
+      px={5}
+      py={5}
+      flex={1}
+    >
       <For each={groups} fallback={<Spinner />}>
         {(group, index) => {
           if (group.tasks.length == 0) return null;

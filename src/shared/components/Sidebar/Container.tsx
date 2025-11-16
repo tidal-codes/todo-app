@@ -15,11 +15,7 @@ const Sidebar = () => {
       py={5}
     >
       <Box mb={3}>
-        <NewProject>
-          <Button variant="outline" width="full" justifyContent="end">
-            پروژه جدید <Plus />
-          </Button>
-        </NewProject>
+        <NewProject></NewProject>
       </Box>
       <SidebarProjectsList />
     </Box>

@@ -41,3 +41,10 @@ export type User = {
 };
 export type SortBy = "DATE" | "TITLE" | "PRIORITY";
 export type GroupBy = "DATE" | "PRIORITY";
+
+export type Menu = {
+  label: string | null;
+  type: "radio";
+  onClick: (value: string) => void;
+  value;
+}[];
