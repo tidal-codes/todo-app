@@ -1,9 +1,8 @@
-import { popoverAnatomy } from "../../anatomy";
-import { defineSlotRecipe } from "../../styled-system";
+import { defineSlotRecipe } from "@chakra-ui/react";
 
 export const popoverSlotRecipe = defineSlotRecipe({
   className: "chakra-popover",
-  slots: popoverAnatomy.keys(),
+  slots: ["content"],
   base: {},
   variants: {
     size: {
@@ -20,6 +19,8 @@ export const popoverSlotRecipe = defineSlotRecipe({
       md: {
         content: {
           "--popover-padding": "spacing.5",
+          width: "fit-content",
+          border: "1px solid",
         },
       },
       lg: {

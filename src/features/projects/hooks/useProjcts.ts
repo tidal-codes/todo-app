@@ -16,24 +16,25 @@ export function useProjects() {
 
   const addMutation = useMutation({
     mutationFn: async ({
+      banner,
+      icon,
       title,
       description,
-      icon,
-      color,
     }: {
+      banner: string;
       title: string;
       description: string;
       icon: string;
-      color: string;
     }) => {
       const newProject = {
         id: `project-${nanoid(8)}`,
+        banner,
+        icon,
         title,
         description,
-        icon,
-        color,
       };
       const data = await supabaseAddProject(newProject);
+      console.log(data);
       return data;
     },
     onSuccess: (data) => {

@@ -1,9 +1,17 @@
-import { Box, Button } from "@chakra-ui/react";
-import SidebarProjectsList from "@/features/projects/components/SidebarList";
-import { Plus } from "lucide-react";
-import NewProject from "@/features/projects/components/newProjectDialog";
+import { Box, For, VStack } from "@chakra-ui/react";
+import { FolderKanban, LayoutDashboard, Settings, Users } from "lucide-react";
+import SidebarItem from "./SidebarItem";
+import { useLocation } from "react-router-dom";
+import { searchInArray } from "@/shared/utils/searchInArray";
+const list = [
+  { path: "dashboard", icon: <LayoutDashboard />, title: "داشبورد" },
+  { path: "projects", icon: <FolderKanban />, title: "پروژه ها" },
+  { path: "team", icon: <Users />, title: "تیم" },
+  { path: "setting", icon: <Settings />, title: "تنظیمات" },
+];
 
 const Sidebar = () => {
+  const location = useLocation();
   return (
     <Box
       bg="background"
@@ -14,10 +22,19 @@ const Sidebar = () => {
       px={3}
       py={5}
     >
-      <Box mb={3}>
-        <NewProject></NewProject>
-      </Box>
-      <SidebarProjectsList />
+      <VStack gap={1}>
+        <For each={list}>
+          {(item) => {
+            return (
+              <SidebarItem
+                key={item.path}
+                {...item}
+                isActive={location.pathname.includes(item.path)}
+              />
+            );
+          }}
+        </For>
+      </VStack>
     </Box>
   );
 };

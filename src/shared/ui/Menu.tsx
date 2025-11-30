@@ -15,7 +15,7 @@ const Menu = ({ children, items }: MenuProps) => {
       <Portal>
         <BaseMenu.Positioner>
           <BaseMenu.Content minW="10rem" zIndex={1500}>
-            {items.map((item, i) => {
+            {/* {items.map((item, i) => {
               switch (item.type) {
                 case "optionGroup":
                   return item.optionType === "radio" ? (
@@ -36,7 +36,7 @@ const Menu = ({ children, items }: MenuProps) => {
                 default:
                   return null;
               }
-            })}
+            })} */}
           </BaseMenu.Content>
         </BaseMenu.Positioner>
       </Portal>

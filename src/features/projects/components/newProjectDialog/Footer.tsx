@@ -1,17 +1,21 @@
 import { Button, Flex } from "@chakra-ui/react";
+import { useAddNewProjectContext } from "../../contexts/NewProjectProvider";
 
-interface Props {
-  handleSubmit: () => void;
-  isLoading: boolean;
-  handleClose: () => void;
-}
-const Footer = ({ handleSubmit, isLoading, handleClose }: Props) => {
+const Footer = ({ setOpen }) => {
+  const { handleSubmit, isAdding } = useAddNewProjectContext();
+  const addProject = async () => {
+    await handleSubmit();
+    setOpen(false);
+  };
+  const closeModal = () => {
+    setOpen(false);
+  };
   return (
     <Flex gap={2} p={3}>
-      <Button variant="outline" onClick={handleClose}>
+      <Button variant="outline" onClick={closeModal}>
         لغو
       </Button>
-      <Button onClick={handleSubmit} loading={isLoading}>
+      <Button onClick={addProject} loading={isAdding}>
         ثبت
       </Button>
     </Flex>

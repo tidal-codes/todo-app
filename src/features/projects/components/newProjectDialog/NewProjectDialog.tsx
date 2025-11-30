@@ -1,10 +1,15 @@
 import Dialog from "@/shared/ui/Dialog";
-import { Separator } from "@chakra-ui/react";
-import React from "react";
-import Header from "./Header";
+import { Box, Button, CloseButton, Image, Separator } from "@chakra-ui/react";
+import React, { useState } from "react";
 import Footer from "./Footer";
 import Form from "./Form";
 import { useAddNewProject } from "../../hooks/useAddNewProject";
+import ChangeBanner from "./ChangeBanner";
+import {
+  NewProjectProvider,
+  useAddNewProjectContext,
+} from "../../contexts/NewProjectProvider";
+import Banner from "./Banner";
 
 export interface newProjectForm {
   icon: string;
@@ -14,33 +19,15 @@ export interface newProjectForm {
 }
 
 const NewProject = ({ children }: { children: React.ReactElement }) => {
-  const {
-    open,
-    setOpen,
-    form,
-    handleChange,
-    handleClose,
-    handleSubmit,
-    onEmojiSelect,
-    onColorSelect,
-    isAdding,
-  } = useAddNewProject();
-
+  const [open, setOpen] = useState(false);
   return (
     <Dialog trigger={children} open={open} setOpen={setOpen}>
-      <Header handleClose={handleClose} />
-      <Form
-        form={form}
-        handleChange={handleChange}
-        onColorSelect={onColorSelect}
-        onEmojiSelect={onEmojiSelect}
-      />
-      <Separator />
-      <Footer
-        handleSubmit={handleSubmit}
-        isLoading={isAdding}
-        handleClose={handleClose}
-      />
+      <NewProjectProvider>
+        <Banner />
+        <Form />
+        <Separator />
+        <Footer setOpen={setOpen} />
+      </NewProjectProvider>
     </Dialog>
   );
 };

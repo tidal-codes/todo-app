@@ -1,46 +1,61 @@
-import { Portal, Select, createListCollection } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Portal,
+  Select as SelectBase,
+  createListCollection,
+} from "@chakra-ui/react";
 
-const SelectBase = () => {
-  const [value, setValue] = useState<string[]>([]);
+interface SelectItem {
+  label: string;
+  value: string;
+}
+
+interface SelectProps {
+  items: SelectItem[];
+  value: string[];
+  onChange: (value: string[]) => void;
+  placeholder?: string;
+  label?: string;
+}
+
+const Select = ({
+  items,
+  value,
+  onChange,
+  placeholder = "Select...",
+  label,
+}: SelectProps) => {
+  const collection = createListCollection({ items });
+
   return (
-    <Select.Root
-      collection={frameworks}
-      width="320px"
+    <SelectBase.Root
+      collection={collection}
       value={value}
-      onValueChange={(e) => setValue(e.value)}
+      onValueChange={(e) => onChange(e.value)}
     >
-      <Select.HiddenSelect />
-      <Select.Label>Select framework</Select.Label>
-      <Select.Control>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
-        </Select.Trigger>
-        <Select.IndicatorGroup>
-          <Select.Indicator />
-        </Select.IndicatorGroup>
-      </Select.Control>
+      <SelectBase.HiddenSelect />
+      {label && <SelectBase.Label>{label}</SelectBase.Label>}
+      <SelectBase.Control dir="rtl">
+        <SelectBase.Trigger>
+          <SelectBase.ValueText placeholder={placeholder} />
+        </SelectBase.Trigger>
+        <SelectBase.IndicatorGroup>
+          <SelectBase.Indicator />
+        </SelectBase.IndicatorGroup>
+      </SelectBase.Control>
       <Portal>
-        <Select.Positioner>
-          <Select.Content>
-            {frameworks.items.map((framework) => (
-              <Select.Item item={framework} key={framework.value}>
-                {framework.label}
-                <Select.ItemIndicator />
-              </Select.Item>
+        <SelectBase.Positioner>
+          <SelectBase.Content>
+            {collection.items.map((item) => (
+              <SelectBase.Item item={item} key={item.value} dir="rtl">
+                {item.label}
+                <SelectBase.ItemIndicator />
+              </SelectBase.Item>
             ))}
-          </Select.Content>
-        </Select.Positioner>
+          </SelectBase.Content>
+        </SelectBase.Positioner>
       </Portal>
-    </Select.Root>
+    </SelectBase.Root>
   );
 };
-export default SelectBase;
-const frameworks = createListCollection({
-  items: [
-    { label: "React.js", value: "react" },
-    { label: "Vue.js", value: "vue" },
-    { label: "Angular", value: "angular" },
-    { label: "Svelte", value: "svelte" },
-  ],
-});
+
+export default Select;

@@ -68,7 +68,8 @@ export const inputRecipe = defineRecipe({
         borderWidth: "1px",
         borderColor: "border",
         focusVisibleRing: "inside",
-        focusRingColor: "brand.primary.600",
+        focusRingColor: "primary.600",
+        focusRingOffset: 2,
       },
       subtle: {
         borderWidth: "1px",

@@ -38,8 +38,22 @@ export const buttonRecipe = defineRecipe({
           _dark: { backgroundColor: "grey.800" },
         },
       },
+      icon: {
+        transition: "none",
+        "& :where(svg)": {
+          opacity: 0.6,
+          width: 3.5,
+          height: 3.5,
+        },
+        _hover: {
+          backgroundColor: "grey.200",
+          "& :where(svg)": {
+            opacity: 1,
+          },
+        },
+      },
       outline: {
-        borderWidth: "1px",
+        border: "1px solid",
       },
       rounded: {
         borderRadius: "full",
@@ -49,10 +63,14 @@ export const buttonRecipe = defineRecipe({
       },
     },
     size: {
-      sm: { px: 1, py: 1, fontSize: "sm" },
-      md: { height: "7", px: 2, fontSize: "sm" },
-      lg: { px: 1, py: 1, fontSize: "lg" },
+      sm: { px: 1, py: 1, fontSize: "xs" },
+      md: { height: "7", px: 2, fontSize: "xs" },
+      lg: { px: 1, py: 1, fontSize: "xs" },
       fit: { px: 1, py: 0.5 },
+      xs_icon: {
+        width: "5",
+        height: "5",
+      },
       square: {
         width: "7",
         height: "7",

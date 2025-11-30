@@ -15,28 +15,27 @@ export async function supabaseGetProjects() {
 }
 export async function supabaseAddProject({
   id,
+  banner,
+  icon,
   title,
   description,
-  icon,
-  color,
 }: {
   id: string;
+  banner: string;
   title: string;
   description: string;
   icon: string;
-  color: string;
 }) {
-  const { data, error } = await supabase
-    .rpc("create_project_with_owner", {
-      p_project_id: id,
-      p_title: title,
-      p_description: description,
-      p_color: color,
-      p_icon: icon,
-    })
-    .select();
+  const { data, error } = await supabase.rpc("create_project_with_owner", {
+    p_project_id: id,
+    p_project_banner: banner,
+    p_icon: icon,
+    p_title: title,
+    p_description: description,
+  });
+
   if (error) throw error;
-  return data?.[0];
+  return data;
 }
 export async function supabaseGetProjectMembers(
   projectId: string,

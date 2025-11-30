@@ -3,11 +3,14 @@ import { buttonRecipe } from "./recipes/button.recipe";
 import { DialogRecipe } from "./recipes/dialog.recipe";
 import { inputRecipe } from "./recipes/input.recipe";
 import { brandColors } from "./brandColors";
+import { selectRecipe } from "./recipes/select.recipe";
+import { popoverSlotRecipe } from "./recipes/popover.recipe";
+import "./font.css";
 
 const config = defineConfig({
   globalCss: {
     "*": {
-      borderColor: "!grey.300",
+      borderColor: "!grey.200",
       _dark: { borderColor: "!grey.600" },
     },
   },
@@ -17,6 +20,7 @@ const config = defineConfig({
       fonts: {
         body: { value: "iranYekan, sans-serif" },
         heading: { value: "iranYekan, sans-serif" },
+        icon: { value: "Material Symbols Rounded" },
       },
     },
     semanticTokens: {
@@ -57,6 +61,10 @@ const config = defineConfig({
       button: buttonRecipe,
       dialog: DialogRecipe,
       input: inputRecipe,
+    },
+    slotRecipes: {
+      select: selectRecipe,
+      popover: popoverSlotRecipe,
     },
   },
 });

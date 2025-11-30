@@ -29,18 +29,23 @@
     "@uidotdev/usehooks": "^2.4.1",
     "date-fns-jalali": "4.1.0-0",
     "dexie": "^4.2.1",
+    "emoji-datasource": "^16.0.0",
     "emoji-mart": "^5.6.0",
+    "emoji.json": "^16.0.0",
     "frimousse": "^0.3.0",
     "lucide": "^0.548.0",
     "lucide-react": "^0.548.0",
     "nanoid": "^5.1.6",
     "next-themes": "^0.4.6",
+    "pexels": "^1.4.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-error-boundary": "^6.0.0",
     "react-hook-form": "^7.65.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.4",
+    "react-virtuoso": "^4.15.0",
+    "react-window": "^2.2.3",
     "yup": "^1.7.1",
     "zustand": "^5.0.8"
   },
@@ -61,5 +66,6 @@
     "typescript": "~5.9.3",
     "vite": "^7.1.7",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "packageManager": "pnpm@10.23.0+sha512.21c4e5698002ade97e4efe8b8b4a89a8de3c85a37919f957e7a0f30f38fbc5bbdd05980ffe29179b2fb6e6e691242e098d945d1601772cad0fef5fb6411e2a4b"
 }

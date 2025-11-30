@@ -1,9 +1,13 @@
-import { Tooltip } from "@/shared/ui/Tooltip";
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { Moon, Plus, Settings, Sun } from "lucide-react";
-import { useColorMode } from "@/app/theme/color-mode";
+import {
+  Box,
+  Button,
+  Flex,
+  IconButton,
+  Input,
+  InputGroup,
+} from "@chakra-ui/react";
+import { BellIcon, SearchIcon } from "lucide-react";
 import Avatar from "@/shared/ui/Avatar";
-import ChangeTheme from "./ChangeTheme";
 
 const Header = () => {
   return (
@@ -18,11 +22,23 @@ const Header = () => {
       px={5}
     >
       <Flex alignItems="center" gap="2">
-        <ChangeTheme />
-
-        <Button gap={1}>
-          <Text>پروژه جدید</Text>
-        </Button>
+        <IconButton
+          aria-label="Notifications"
+          variant="ghost"
+          colorScheme="whiteAlpha"
+        >
+          <BellIcon />
+        </IconButton>
+        <InputGroup w="180px" startElement={<SearchIcon />}>
+          <Input
+            type="text"
+            placeholder="Search"
+            bg="white"
+            color="black"
+            _placeholder={{ color: "gray.500" }}
+            borderRadius="md"
+          />
+        </InputGroup>
       </Flex>
       <Flex alignItems="center" gap={2}>
         <Button variant="ghost" size="square" rounded="full">
